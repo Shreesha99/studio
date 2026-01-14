@@ -45,9 +45,11 @@ export function Header() {
       {/* Centered Logo for all screen sizes */}
       <header className="fixed top-0 z-50 w-full flex justify-center pt-4 transition-all duration-300">
         <Link href="#home" className={cn(
-          "relative flex items-center gap-2 transition-transform duration-500 ease-in-out",
-          isScrolled && !isMobile && "!-translate-x-[calc(50vw-5rem)]",
-          isScrolled && isMobile && "!-translate-x-[calc(50vw-4rem)]"
+          "relative flex items-center gap-2 transition-all duration-500 ease-in-out",
+          "p-2 rounded-full",
+          isScrolled ? "bg-transparent" : "bg-black/20 backdrop-blur-sm",
+          isScrolled && !isMobile && "!translate-x-[calc(50vw-5rem)]",
+          isScrolled && isMobile && "!translate-x-[calc(50vw-4rem)]"
         )}>
           <div className={cn(
             "transition-all duration-300 ease-in-out flex items-center justify-center",
@@ -57,7 +59,7 @@ export function Header() {
           </div>
           <h1 className={cn(
             "text-lg font-bold font-headline transition-all duration-300 ease-in-out text-white",
-            isScrolled ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0"
+            isScrolled ? "opacity-0 -translate-x-4 w-0 pr-0" : "opacity-100 translate-x-0 w-auto pr-4"
           )}>
             Suprabha Electricals
           </h1>
@@ -69,7 +71,7 @@ export function Header() {
         <ThemeToggle />
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-white">
+            <Button variant="ghost" size="icon" className="text-white bg-black/20 hover:bg-black/30 backdrop-blur-sm">
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
