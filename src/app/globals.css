@@ -56,4 +56,11 @@
   body {
     @apply bg-background text-foreground;
   }
+  .service-item-hover-effect .service-item-title {
+    transition: transform 0.3s ease;
+  }
+
+  .service-item-hover-effect:hover .service-item-title {
+    transform: translateX(1rem);
+  }
 }

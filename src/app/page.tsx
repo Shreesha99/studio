@@ -18,12 +18,8 @@ export default function Home() {
         <Hero />
         <Services />
         <About />
-        <WhyChooseUs />
         <Projects />
         <Testimonials />
-        <div className="container py-12">
-            <Separator />
-        </div>
         <Contact />
       </main>
       <Footer />
