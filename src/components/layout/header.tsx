@@ -44,7 +44,7 @@ export function Header() {
       <header className="fixed top-0 z-50 w-full flex justify-center pt-4 transition-all duration-300">
         <Link href="#home" className={cn(
           "relative flex items-center gap-2 transition-transform duration-300 ease-in-out",
-          isScrolled && "md:-translate-x-[calc(50vw-50%)]"
+          isScrolled && "md:-translate-x-[calc(50vw-100%)]"
         )}>
           <div className={cn(
             "transition-all duration-300 ease-in-out flex items-center justify-center",
