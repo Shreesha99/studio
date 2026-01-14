@@ -47,9 +47,9 @@ export function Header() {
         <Link href="#home" className={cn(
           "relative flex items-center gap-2 transition-all duration-500 ease-in-out",
           "p-2 rounded-full",
-          isScrolled ? "bg-transparent" : "bg-black/20 backdrop-blur-sm",
-          isScrolled && !isMobile && "!translate-x-[calc(50vw-5rem)]",
-          isScrolled && isMobile && "!translate-x-[calc(50vw-4rem)]"
+          isScrolled ? "bg-transparent" : "bg-black",
+          isScrolled && !isMobile && "!translate-x-[calc(35vw-5rem)]",
+          isScrolled && isMobile && "!translate-x-[calc(35vw-4rem)]"
         )}>
           <div className={cn(
             "transition-all duration-300 ease-in-out flex items-center justify-center",
