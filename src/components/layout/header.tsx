@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/sheet';
 import { ThemeToggle } from '../theme-toggle';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -25,6 +26,7 @@ const navLinks = [
 export function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +46,8 @@ export function Header() {
       <header className="fixed top-0 z-50 w-full flex justify-center pt-4 transition-all duration-300">
         <Link href="#home" className={cn(
           "relative flex items-center gap-2 transition-transform duration-300 ease-in-out",
-          isScrolled && "md:-translate-x-[calc(50vw-100%)]"
+          isScrolled && !isMobile && "md:-translate-x-[calc(50vw-100%)]",
+          isScrolled && isMobile && "-translate-x-[calc(50vw-4.5rem)]"
         )}>
           <div className={cn(
             "transition-all duration-300 ease-in-out flex items-center justify-center",
