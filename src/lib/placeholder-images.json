@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-background",
-      "description": "A wide shot of a modern city skyline at dusk, representing large-scale electrical infrastructure.",
-      "imageUrl": "https://images.unsplash.com/photo-1535498730771-e735b998cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjaXR5JTIwc2t5bGluZXxlbnwwfHx8fDE3Njg0MDI5MTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "city skyline"
+      "description": "A dramatic shot of electrical power lines against a sunset sky, representing power distribution.",
+      "imageUrl": "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbGVjdHJpY2l0eSUyMHBvd2VyJTIwZ3JpZHxlbnwwfHx8fDE3Njg0MDI5MTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "power grid"
     },
     {
       "id": "about-image",
@@ -35,6 +35,30 @@
       "description": "A large, well-lit modern auditorium, highlighting complex lighting and AV systems.",
       "imageUrl": "https://images.unsplash.com/photo-1722321974479-a6722bea8b23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdWRpdG9yaXVtJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NDEzOTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "auditorium lighting"
+    },
+    {
+      "id": "service-govt",
+      "description": "An imposing government building facade, representing government contracts.",
+      "imageUrl": "https://images.unsplash.com/photo-1494476105528-620b211f568d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb3Zlcm5tZW50JTIwYnVpbGRpbmd8ZW58MHx8fHwxNzY4MzI4MDg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "government building"
+    },
+    {
+      "id": "service-installations",
+      "description": "An electrician working on a complex electrical panel.",
+      "imageUrl": "https://images.unsplash.com/photo-1517420704952-d9f39e95b41d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVsZWN0cmljYWwlMjBwYW5lbHxlbnwwfHwwfHx8MA%3D%3D",
+      "imageHint": "electrical panel"
+    },
+    {
+      "id": "service-auditorium",
+      "description": "Dramatic lighting in a modern empty auditorium.",
+      "imageUrl": "https://images.unsplash.com/photo-1722321974479-a6722bea8b23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdWRpdG9yaXVtJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NDEzOTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "auditorium lighting"
+    },
+    {
+      "id": "service-infra",
+      "description": "A view of a large university campus or institutional complex.",
+      "imageUrl": "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx1bml2ZXJzaXR5JTIwY2FtcHVzfGVufDB8fHx8MTc2ODMzNjk0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "university campus"
     }
   ]
 }

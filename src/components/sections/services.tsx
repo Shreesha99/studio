@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ServiceItem, type Service } from '@/components/service-item';
 import { ServiceImage } from '@/components/service-image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const services: Service[] = [
   {
@@ -13,28 +14,28 @@ const services: Service[] = [
     iconName: "Gavel",
     title: "Government Projects",
     description: "Specializing in electrical tendering and execution for state and central government projects.",
-    imageUrl: "https://images.unsplash.com/photo-1494476105528-620b211f568d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb3Zlcm5tZW50JTIwYnVpbGRpbmd8ZW58MHx8fHwxNzY4MzI4MDg5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: PlaceHolderImages.find(p => p.id === 'service-govt')!.imageUrl
   },
   {
     id: 2,
     iconName: "Lightbulb",
     title: "Electrical Installations",
     description: "Complete installation services for new buildings, infrastructure, and public facilities.",
-    imageUrl: "https://images.unsplash.com/photo-1517420704952-d9f39e95b41d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVsZWN0cmljYWwlMjBwYW5lbHxlbnwwfHwwfHx8MA%3D%3D"
+    imageUrl: PlaceHolderImages.find(p => p.id === 'service-installations')!.imageUrl
   },
   {
     id: 3,
     iconName: "Building",
     title: "Auditorium & Public Spaces",
     description: "Expert design and installation of lighting and electrical systems for auditoriums and large venues.",
-    imageUrl: "https://images.unsplash.com/photo-1722321974479-a6722bea8b23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdWRpdG9yaXVtJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NDEzOTM3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: PlaceHolderImages.find(p => p.id === 'service-auditorium')!.imageUrl
   },
   {
     id: 4,
     iconName: "Network",
     title: "Infrastructure Setup",
     description: "Electrical setup for new wings of institutions, and large-scale infrastructure projects.",
-    imageUrl: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx1bml2ZXJzaXR5JTIwY2FtcHVzfGVufDB8fHx8MTc2ODMzNjk0M3ww&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: PlaceHolderImages.find(p => p.id === 'service-infra')!.imageUrl
   },
 ];
 
