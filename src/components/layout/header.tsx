@@ -12,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -54,10 +55,12 @@ export function Header() {
             <Button asChild className="rounded-full text-primary-foreground font-bold">
                 <Link href="#contact">Get a Quote</Link>
             </Button>
+            <ThemeToggle />
         </div>
 
 
-        <div className="md:hidden ml-4">
+        <div className="md:hidden ml-4 flex items-center gap-2">
+          <ThemeToggle />
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
