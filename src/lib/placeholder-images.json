@@ -3,37 +3,37 @@
     {
       "id": "hero-background",
       "description": "A landscape with solar panels and wind turbines under a dramatic sky, signifying renewable energy.",
-      "imageUrl": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzb2xhciUyMHBhbmVscyUyMGFuZCUyMHdpbmQlMjB0dXJiaW5lc3xlbnwwfHx8fDE3NjkyMzkzODJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1558608287-bcc54ddaa7d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c29sYXIlMjB3aW5kfGVufDB8fHx8MTc2ODQxNDk0OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "solar wind"
     },
     {
       "id": "about-image",
       "description": "A team of engineers and electricians discussing plans on a construction site for a renewable energy project.",
-      "imageUrl": "https://images.unsplash.com/photo-1624391673215-3b5e836b3b5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxlbmdpbmVlcnMlMjBzb2xhcnxlbnwwfHx8fDE3NjkyMzk0NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1672332160853-2a9422b4632b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZW5naW5lZXJzJTIwc29sYXJ8ZW58MHx8fHwxNzY4NDE0OTUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "engineers solar"
     },
     {
       "id": "project-geological-survey",
       "description": "A modern government building with energy-efficient features.",
-      "imageUrl": "https://images.unsplash.com/photo-1582993738520-41e7fb62751f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBnb3Zlcm5tZW50JTIwYnVpbGRpbmd8ZW58MHx8fHwxNzY5MjM5NDcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "modern government building"
+      "imageUrl": "https://images.unsplash.com/photo-1609134544755-137e6d2198dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb2Rlcm4lMjBnb3Zlcm5tZW50fGVufDB8fHx8MTc2ODQxNDk1MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern government"
     },
     {
       "id": "project-cii-bangalore",
       "description": "Corporate office building with a focus on sustainable architecture.",
-      "imageUrl": "https://images.unsplash.com/photo-1620912189836-1679a105f638?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdXN0YWluYWJsZSUyMG9mZmljZXxlbnwwfHx8fDE3NjkyMzk1MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1743148509752-9ea6072ea35f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdXN0YWluYWJsZSUyMG9mZmljZXxlbnwwfHx8fDE3Njg0MTQ5NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "sustainable office"
     },
     {
       "id": "project-nit-surathkal",
       "description": "University building with solar panels on the roof.",
-      "imageUrl": "https://images.unsplash.com/photo-1605799902642-758b7a6505a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2xhciUyMHBhbmVscyUyMG9uJTIwY2FtcHVzfGVufDB8fHx8MTc2OTIzOTUzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1627623869807-7dc559317c85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb2xhciUyMGNhbXB1c3xlbnwwfHx8fDE3Njg0MTQ5NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "solar campus"
     },
     {
       "id": "project-auditorium",
       "description": "Modern auditorium with energy-efficient LED lighting system.",
-      "imageUrl": "https://images.unsplash.com/photo-1543699539-a6027c95b766?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb2Rlcm4lMjBhdWRpdG9yaXVtfGVufDB8fHx8MTc2OTIzOTU2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1646153389640-958d7ba1a864?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtb2Rlcm4lMjBhdWRpdG9yaXVtfGVufDB8fHx8MTc2ODQxNDk1MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern auditorium"
     }
   ]
