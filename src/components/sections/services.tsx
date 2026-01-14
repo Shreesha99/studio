@@ -57,7 +57,7 @@ export function Services() {
   }, { scope: container });
 
   return (
-    <section id="services" ref={container} className="py-24 lg:py-32 bg-background overflow-hidden">
+    <section id="services" ref={container} className="py-24 lg:py-32 bg-card overflow-hidden">
       <div className="container space-y-16">
         <div className="text-center space-y-4 section-header-services max-w-3xl mx-auto">
           <span className="text-primary font-semibold">Our Services</span>
@@ -68,8 +68,8 @@ export function Services() {
             We provide a complete range of electrical services tailored for government contracts, ensuring quality, safety, and efficiency.
           </p>
         </div>
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          <div className="flex flex-col border-t border-border">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="flex flex-col">
             {services.map((service) => (
               <ServiceItem
                 key={service.id}

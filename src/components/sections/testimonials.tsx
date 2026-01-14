@@ -55,7 +55,7 @@ export function Testimonials() {
     }, {scope: container})
 
   return (
-    <section id="testimonials" ref={container} className="py-24 lg:py-32 bg-secondary">
+    <section id="testimonials" ref={container} className="py-24 lg:py-32 bg-background">
       <div className="container space-y-16">
         <div className="text-center space-y-4 testimonials-header">
           <span className="text-primary font-semibold">Testimonials</span>

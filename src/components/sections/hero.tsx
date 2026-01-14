@@ -33,6 +33,12 @@ export function Hero() {
       "-=0.6"
     )
     .fromTo(
+      ".hero-description",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+      "-=0.6"
+    )
+    .fromTo(
       ".hero-buttons",
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
@@ -58,7 +64,7 @@ export function Hero() {
   }, { scope: container });
 
   return (
-    <section ref={container} id="home" className="relative w-full h-screen min-h-[700px] flex flex-col justify-center text-white overflow-hidden">
+    <section ref={container} id="home" className="relative w-full h-screen min-h-[800px] flex flex-col justify-center text-white overflow-hidden">
       {heroImage && (
          <Image
             src={heroImage.imageUrl}
@@ -71,28 +77,31 @@ export function Hero() {
           />
       )}
       <div className="absolute inset-0 bg-black/60" />
-      <div className="relative z-10 container text-center space-y-8 mt-auto">
-        <p className="text-lg text-primary font-bold tracking-wide uppercase hero-subtitle">Expert Electrical Contracting in Karnataka</p>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-black tracking-tight uppercase drop-shadow-lg hero-title">
-          Powering Public & Private Sectors
-        </h1>
-        <div className="flex gap-4 justify-center hero-buttons">
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full px-8">
-            <Link href="#services">Our Services</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="border-white/50 bg-white/10 hover:bg-white/20 text-white rounded-full px-8 font-bold backdrop-blur-sm">
-            <Link href="#contact">Contact Us</Link>
-          </Button>
-        </div>
-      </div>
       
-      <div className="relative z-10 container mt-auto mb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 hero-features">
+      <div className="relative z-10 container grid md:grid-cols-2 gap-16 items-center">
+        <div className="space-y-6 text-center md:text-left">
+          <p className="text-lg text-primary font-bold tracking-wide uppercase hero-subtitle">Expert Electrical Contracting in Karnataka</p>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-black tracking-tight uppercase drop-shadow-lg hero-title">
+            Powering Public & Private Sectors
+          </h1>
+          <p className="text-lg md:text-xl text-foreground/80 hero-description max-w-lg mx-auto md:mx-0">
+            Delivering excellence and reliability in government and commercial electrical projects across Karnataka.
+          </p>
+          <div className="flex gap-4 justify-center md:justify-start hero-buttons">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full px-8">
+              <Link href="#services">Our Services</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white/50 bg-white/10 hover:bg-white/20 text-white rounded-full px-8 font-bold backdrop-blur-sm">
+              <Link href="#contact">Contact Us</Link>
+            </Button>
+          </div>
+        </div>
+        <div className="hidden md:grid grid-cols-1 gap-6 hero-features">
             {features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-black/30 backdrop-blur-sm border border-white/10">
                     {feature.icon}
                     <div>
-                        <h3 className="font-bold">{feature.title}</h3>
+                        <h3 className="font-bold text-lg">{feature.title}</h3>
                         <p className="text-sm text-muted-foreground">{feature.description}</p>
                     </div>
                 </div>

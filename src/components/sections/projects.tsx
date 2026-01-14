@@ -62,30 +62,29 @@ export function Projects() {
         <div className="text-center space-y-4 section-header-projects">
           <span className="text-primary font-semibold">Our Work</span>
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
-            Our Seamless Electrical Process
+            Featured Projects
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            A showcase of our successfully completed government electrical projects.
+            A showcase of our successfully completed government and commercial electrical projects.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             project.imageUrl && (
               <Card key={index} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group project-card border-border bg-card rounded-lg">
-                <div className="relative h-64 w-full">
+                <div className="relative h-80 w-full">
                   <Image
                     src={project.imageUrl}
                     alt={project.description || project.title}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                     data-ai-hint={project.imageHint}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-4">
-                      <p className="text-sm text-white/80">{project.location}</p>
-                      <h3 className="font-bold text-white text-lg">{project.title}</h3>
-                  </div>
+                </div>
+                 <div className="p-6">
+                    <p className="text-sm text-primary font-semibold">{project.location}</p>
+                    <h3 className="font-bold text-white text-xl mt-1">{project.title}</h3>
                 </div>
               </Card>
             )

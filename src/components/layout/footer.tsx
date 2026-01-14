@@ -4,7 +4,7 @@ import Link from 'next/link';
 export function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-secondary text-secondary-foreground">
+    <footer className="bg-card text-secondary-foreground">
       <div className="container py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">

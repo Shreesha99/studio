@@ -51,7 +51,7 @@ export function Contact() {
   }, { scope: container });
 
   return (
-    <section id="contact" ref={container} className="py-24 lg:py-32 bg-secondary overflow-hidden">
+    <section id="contact" ref={container} className="py-24 lg:py-32 bg-card overflow-hidden">
       <div className="container">
         <div className="text-center space-y-4 mb-12 section-header-contact">
           <span className="text-primary font-semibold">Contact Us</span>
@@ -67,7 +67,7 @@ export function Contact() {
           <div className="space-y-8 flex flex-col h-full">
             {contactDetails.map((item, index) => (
               <div key={index} className="flex items-center gap-4 contact-detail-item">
-                <div className="bg-primary/10 p-3 rounded-lg">
+                <div className="bg-secondary p-3 rounded-lg">
                   {item.icon}
                 </div>
                 <div>
@@ -90,16 +90,16 @@ export function Contact() {
             </div>
           </div>
           
-          <Card className="shadow-lg contact-card bg-card border-border">
+          <Card className="shadow-lg contact-card bg-secondary border-border">
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Send us a Message</CardTitle>
               <CardDescription>We'll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
               <form className="space-y-4">
-                <Input placeholder="Your Name" className="bg-input" />
-                <Input type="email" placeholder="Your Email" className="bg-input" />
-                <Textarea placeholder="Your Message" rows={5} className="bg-input" />
+                <Input placeholder="Your Name" className="bg-background" />
+                <Input type="email" placeholder="Your Email" className="bg-background" />
+                <Textarea placeholder="Your Message" rows={5} className="bg-background" />
                 <Button type="submit" size="lg" className="w-full text-primary-foreground font-bold">Send Message</Button>
               </form>
             </CardContent>
