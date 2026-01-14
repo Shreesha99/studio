@@ -49,7 +49,7 @@ export function Projects() {
   }, { scope: container });
 
   return (
-    <section id="projects" ref={container} className="py-16 lg:py-24 bg-background overflow-hidden">
+    <section id="projects" ref={container} className="py-16 lg:py-24 bg-secondary overflow-hidden">
       <div className="container space-y-12">
         <div className="text-center space-y-4 section-header-projects">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">
@@ -62,7 +62,7 @@ export function Projects() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {projects.map((project, index) => (
             project.imageUrl && (
-              <Card key={index} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group project-card">
+              <Card key={index} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group project-card border-0 rounded-lg">
                 <div className="relative h-48 w-full">
                   <Image
                     src={project.imageUrl}

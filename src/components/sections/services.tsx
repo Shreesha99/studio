@@ -47,7 +47,7 @@ export function Services() {
   }, { scope: container });
 
   return (
-    <section id="services" ref={container} className="py-16 lg:py-24 bg-secondary overflow-hidden">
+    <section id="services" ref={container} className="py-16 lg:py-24 bg-background overflow-hidden">
       <div className="container space-y-12">
         <div className="text-center space-y-4 section-header-services">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">
@@ -59,9 +59,11 @@ export function Services() {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="text-center shadow-md hover:shadow-xl transition-shadow duration-300 service-card">
+            <Card key={index} className="text-center shadow-md hover:shadow-xl transition-shadow duration-300 service-card rounded-lg bg-card">
               <CardHeader className="items-center pb-4">
-                {service.icon}
+                <div className="p-4 bg-primary/10 rounded-full">
+                  {service.icon}
+                </div>
               </CardHeader>
               <CardContent className="space-y-2">
                 <CardTitle className="text-xl font-headline">{service.title}</CardTitle>

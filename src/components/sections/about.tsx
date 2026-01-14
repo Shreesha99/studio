@@ -28,7 +28,7 @@ export function About() {
   }, { scope: container });
 
   return (
-    <section id="about" ref={container} className="py-16 lg:py-24 bg-background overflow-hidden">
+    <section id="about" ref={container} className="py-16 lg:py-24 bg-secondary overflow-hidden">
       <div className="container grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary about-title">
@@ -42,7 +42,7 @@ export function About() {
           </p>
         </div>
         <div className="flex justify-center">
-          <Card className="overflow-hidden shadow-lg w-full max-w-sm border-0 about-img-card">
+          <Card className="overflow-hidden shadow-lg w-full max-w-sm border-0 about-img-card rounded-lg">
             <CardContent className="p-0">
               {aboutImage && (
                 <Image
