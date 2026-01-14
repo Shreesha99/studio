@@ -3,10 +3,6 @@
 import Link from 'next/link';
 import { Menu, Zap } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -48,7 +44,7 @@ export function Header() {
       <header className="fixed top-0 z-50 w-full flex justify-center pt-4 transition-all duration-300">
         <Link href="#home" className={cn(
           "relative flex items-center gap-2 transition-transform duration-300 ease-in-out",
-          isScrolled && "transform -translate-x-[calc(50%-20px)] md:-translate-x-0"
+          isScrolled && "md:-translate-x-[calc(50vw-50%)]"
         )}>
           <div className={cn(
             "transition-all duration-300 ease-in-out flex items-center justify-center",
