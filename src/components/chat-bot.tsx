@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { Bot, Send, X, User, Loader2 } from "lucide-react";
+import { Bot, Send, X, User, Loader2, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -26,16 +26,21 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showScrollDown, setShowScrollDown] = useState(false);
 
-  const viewportRef = useRef<HTMLDivElement>(null);
+  const scrollAreaRootRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isAtBottomRef = useRef(true);
 
+  /* External open trigger */
   useEffect(() => {
     const open = () => setIsOpen(true);
     window.addEventListener("open-chatbot", open);
     return () => window.removeEventListener("open-chatbot", open);
   }, []);
 
+  /* Initial greeting */
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([
@@ -48,13 +53,49 @@ export default function ChatBot() {
     }
   }, [isOpen, messages.length]);
 
-  const scrollToBottom = () => {
-    if (!viewportRef.current) return;
-    viewportRef.current.scrollTop = viewportRef.current.scrollHeight;
+  /* Get Radix viewport */
+  useEffect(() => {
+    if (!scrollAreaRootRef.current) return;
+
+    viewportRef.current = scrollAreaRootRef.current.querySelector(
+      "[data-radix-scroll-area-viewport]"
+    );
+
+    const el = viewportRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const distanceFromBottom =
+        el.scrollHeight - el.scrollTop - el.clientHeight;
+
+      const atBottom = distanceFromBottom < 32;
+      isAtBottomRef.current = atBottom;
+      setShowScrollDown(!atBottom);
+    };
+
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [isOpen]);
+
+  const scrollToBottom = (smooth = true) => {
+    const el = viewportRef.current;
+    if (!el) return;
+
+    el.scrollTo({
+      top: el.scrollHeight,
+      behavior: smooth ? "smooth" : "auto",
+    });
+
+    setShowScrollDown(false);
+    isAtBottomRef.current = true;
   };
 
   useLayoutEffect(() => {
-    scrollToBottom();
+    if (isAtBottomRef.current) {
+      scrollToBottom(false);
+    } else {
+      setShowScrollDown(true);
+    }
   }, [messages, isLoading]);
 
   useEffect(() => {
@@ -64,10 +105,9 @@ export default function ChatBot() {
   const handleSend = () => {
     if (!input.trim() || isLoading) return;
 
-    setMessages((prev) => [
-      ...prev,
-      { id: Date.now(), isUser: true, text: input },
-    ]);
+    const text = input;
+
+    setMessages((prev) => [...prev, { id: Date.now(), isUser: true, text }]);
     setInput("");
     setIsLoading(true);
 
@@ -77,7 +117,7 @@ export default function ChatBot() {
         {
           id: Date.now() + 1,
           isUser: false,
-          text: getSmartReply(input),
+          text: getSmartReply(text),
         },
       ]);
       setIsLoading(false);
@@ -88,8 +128,19 @@ export default function ChatBot() {
 
   return (
     <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-sm">
-      <Card className="h-[70vh] flex flex-col shadow-2xl">
-        <CardHeader className="flex justify-between items-center border-b">
+      <Card className="h-[70vh] flex flex-col shadow-2xl relative">
+        {/* ✅ Close button – absolute top right */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsOpen(false)}
+          className="absolute top-3 right-3 z-10"
+        >
+          <X className="h-4 w-4" />
+        </Button>
+
+        {/* Header */}
+        <CardHeader className="border-b">
           <div className="flex items-center gap-2">
             <Avatar>
               <AvatarFallback className="bg-primary text-primary-foreground">
@@ -98,14 +149,12 @@ export default function ChatBot() {
             </Avatar>
             <h3 className="font-semibold">Suprabha Assistant</h3>
           </div>
-          <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
-            <X className="h-4 w-4" />
-          </Button>
         </CardHeader>
 
-        <CardContent className="flex-1 p-0 overflow-hidden">
-          <ScrollArea className="h-full">
-            <div ref={viewportRef} className="p-4 space-y-4">
+        {/* Messages */}
+        <CardContent className="flex-1 p-0 relative overflow-hidden">
+          <ScrollArea ref={scrollAreaRootRef} className="h-full">
+            <div className="p-4 space-y-4">
               {messages.map((m) => (
                 <div
                   key={m.id}
@@ -128,13 +177,28 @@ export default function ChatBot() {
                   {m.isUser && <User className="h-4 w-4 mt-1" />}
                 </div>
               ))}
+
               {isLoading && (
-                <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span className="text-xs">Typing…</span>
+                </div>
               )}
             </div>
           </ScrollArea>
+
+          {showScrollDown && (
+            <Button
+              size="icon"
+              onClick={() => scrollToBottom()}
+              className="absolute bottom-4 right-4 h-9 w-9 rounded-full shadow-lg"
+            >
+              <ArrowDown className="h-4 w-4" />
+            </Button>
+          )}
         </CardContent>
 
+        {/* Input */}
         <CardFooter className="border-t p-4">
           <form
             onSubmit={(e) => {
