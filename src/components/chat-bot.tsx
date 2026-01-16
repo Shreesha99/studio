@@ -27,203 +27,134 @@ export default function ChatBot() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const viewportRef = useRef<HTMLDivElement | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  /* Initial greeting */
+  useEffect(() => {
+    const open = () => setIsOpen(true);
+    window.addEventListener("open-chatbot", open);
+    return () => window.removeEventListener("open-chatbot", open);
+  }, []);
+
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([
         {
           id: 1,
           isUser: false,
-          text: "Hello! I am Suprabha Electricals’ assistant. You can ask me about our services, experience, licenses, or contact details.",
+          text: "Hello! I’m the Suprabha Electricals assistant. How can I help you?",
         },
       ]);
     }
   }, [isOpen, messages.length]);
 
-  /* Centralized scroll helper */
   const scrollToBottom = () => {
     if (!viewportRef.current) return;
     viewportRef.current.scrollTop = viewportRef.current.scrollHeight;
   };
 
-  /**
-   * 🔥 CRITICAL PART
-   * useLayoutEffect runs AFTER DOM paint but BEFORE browser paint
-   * so loader + messages are guaranteed to exist
-   */
   useLayoutEffect(() => {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  /* Refocus input after bot finishes */
   useEffect(() => {
-    if (!isLoading && isOpen) {
-      inputRef.current?.focus();
-    }
+    if (!isLoading && isOpen) inputRef.current?.focus();
   }, [isLoading, isOpen]);
 
   const handleSend = () => {
     if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = {
-      id: Date.now(),
-      isUser: true,
-      text: input,
-    };
-
-    setMessages((prev) => [...prev, userMessage]);
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now(), isUser: true, text: input },
+    ]);
     setInput("");
     setIsLoading(true);
 
     setTimeout(() => {
-      const reply = getSmartReply(input);
-
       setMessages((prev) => [
         ...prev,
         {
           id: Date.now() + 1,
           isUser: false,
-          text: reply,
+          text: getSmartReply(input),
         },
       ]);
-
       setIsLoading(false);
     }, 600);
   };
 
+  if (!isOpen) return null;
+
   return (
-    <>
-      {/* Floating Open Button */}
-      <div
-        className={cn(
-          "fixed bottom-4 right-4 z-[60] transition-transform",
-          isOpen ? "translate-x-[calc(100%+2rem)]" : "translate-x-0"
-        )}
-      >
-        <Button
-          size="icon"
-          className="h-16 w-16 rounded-full shadow-lg bg-primary text-primary-foreground"
-          onClick={() => setIsOpen(true)}
-        >
-          <Bot className="h-8 w-8" />
-        </Button>
-      </div>
+    <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-sm">
+      <Card className="h-[70vh] flex flex-col shadow-2xl">
+        <CardHeader className="flex justify-between items-center border-b">
+          <div className="flex items-center gap-2">
+            <Avatar>
+              <AvatarFallback className="bg-primary text-primary-foreground">
+                <Bot />
+              </AvatarFallback>
+            </Avatar>
+            <h3 className="font-semibold">Suprabha Assistant</h3>
+          </div>
+          <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+            <X className="h-4 w-4" />
+          </Button>
+        </CardHeader>
 
-      {/* Chat Window */}
-      <div
-        className={cn(
-          "fixed bottom-4 right-4 z-[60] w-[calc(100%-2rem)] max-w-sm transition-transform",
-          isOpen ? "translate-x-0" : "translate-x-[calc(100%+2rem)]"
-        )}
-      >
-        <Card className="h-[70vh] flex flex-col shadow-2xl">
-          {/* Header */}
-          <CardHeader className="flex flex-row items-center justify-between border-b">
-            <div className="flex items-center gap-3">
-              <Avatar>
-                <AvatarFallback className="bg-primary text-primary-foreground">
-                  <Bot />
-                </AvatarFallback>
-              </Avatar>
-              <h3 className="font-semibold">Suprabha Assistant</h3>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(false)}
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </CardHeader>
-
-          {/* Messages */}
-          <CardContent className="flex-1 overflow-hidden p-0">
-            <ScrollArea className="h-full">
-              <div ref={viewportRef} className="p-4 space-y-4">
-                {messages.map((message) => (
+        <CardContent className="flex-1 p-0 overflow-hidden">
+          <ScrollArea className="h-full">
+            <div ref={viewportRef} className="p-4 space-y-4">
+              {messages.map((m) => (
+                <div
+                  key={m.id}
+                  className={cn(
+                    "flex gap-2",
+                    m.isUser ? "justify-end" : "justify-start"
+                  )}
+                >
+                  {!m.isUser && <Bot className="h-4 w-4 mt-1" />}
                   <div
-                    key={message.id}
                     className={cn(
-                      "flex items-end gap-2",
-                      message.isUser ? "justify-end" : "justify-start"
+                      "rounded-lg px-4 py-2 text-sm max-w-[75%]",
+                      m.isUser
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted"
                     )}
                   >
-                    {!message.isUser && (
-                      <Avatar className="h-8 w-8">
-                        <AvatarFallback className="bg-primary text-primary-foreground">
-                          <Bot className="h-4 w-4" />
-                        </AvatarFallback>
-                      </Avatar>
-                    )}
-
-                    <div
-                      className={cn(
-                        "max-w-[75%] rounded-lg px-4 py-2 text-sm",
-                        message.isUser
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground"
-                      )}
-                    >
-                      {message.text}
-                    </div>
-
-                    {message.isUser && (
-                      <Avatar className="h-8 w-8">
-                        <AvatarFallback>
-                          <User className="h-4 w-4" />
-                        </AvatarFallback>
-                      </Avatar>
-                    )}
+                    {m.text}
                   </div>
-                ))}
+                  {m.isUser && <User className="h-4 w-4 mt-1" />}
+                </div>
+              ))}
+              {isLoading && (
+                <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+              )}
+            </div>
+          </ScrollArea>
+        </CardContent>
 
-                {isLoading && (
-                  <div className="flex items-end gap-2">
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback className="bg-primary text-primary-foreground">
-                        <Bot className="h-4 w-4" />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="rounded-lg px-4 py-2 bg-muted">
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </ScrollArea>
-          </CardContent>
-
-          {/* Input */}
-          <CardFooter className="border-t p-4">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSend();
-              }}
-              className="flex w-full gap-2"
-            >
-              <Input
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about services, licenses, or contact..."
-                disabled={isLoading}
-              />
-              <Button
-                type="submit"
-                size="icon"
-                disabled={isLoading}
-                className="text-primary-foreground"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
-            </form>
-          </CardFooter>
-        </Card>
-      </div>
-    </>
+        <CardFooter className="border-t p-4">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSend();
+            }}
+            className="flex w-full gap-2"
+          >
+            <Input
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask something…"
+            />
+            <Button size="icon" type="submit">
+              <Send className="h-4 w-4" />
+            </Button>
+          </form>
+        </CardFooter>
+      </Card>
+    </div>
   );
 }
