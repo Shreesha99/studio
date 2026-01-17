@@ -98,9 +98,18 @@ export function Header() {
       <div className="md:hidden fixed top-4 right-4 z-50">
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Menu />
-            </Button>
+            <div
+              className="
+              rounded-md
+              border
+              bg-background
+              shadow-sm
+        "
+            >
+              <Button variant="ghost" size="icon" className="rounded-full">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </div>
           </SheetTrigger>
 
           <SheetContent side="bottom">
@@ -108,7 +117,6 @@ export function Header() {
               <SheetTitle>Menu</SheetTitle>
             </SheetHeader>
 
-            {/* 👇 THIS is where Help belongs */}
             <div className="mt-6 space-y-4">
               {navLinks.map((link) => (
                 <Link
@@ -116,17 +124,16 @@ export function Header() {
                   href={link.href}
                   onClick={closeSheet}
                   className={cn(
-                    "block text-lg",
+                    "block text-lg transition-colors",
                     activeSection === link.href.replace("#", "")
                       ? "text-primary"
-                      : "text-muted-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {link.label}
                 </Link>
               ))}
 
-              {/* 💬 Help — MOBILE */}
               <button
                 onClick={() => {
                   closeSheet();
