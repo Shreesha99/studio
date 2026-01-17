@@ -41,7 +41,7 @@ export function About() {
     <section
       id="about"
       ref={container}
-      className="py-24 lg:py-32 bg-background overflow-hidden"
+      className="py-16 lg:py-20 bg-background overflow-hidden"
     >
       <div className="container grid lg:grid-cols-2 gap-16 items-center">
         {/* Image */}
@@ -59,7 +59,7 @@ export function About() {
         </div>
 
         {/* Content */}
-        <div className="about-content space-y-10">
+        <div className="about-content space-y-7">
           {/* Heading */}
           <div className="space-y-3">
             <span className="text-sm font-semibold text-primary uppercase tracking-wide">
@@ -70,15 +70,14 @@ export function About() {
             </h2>
           </div>
 
-          {/* Core content */}
-          <ul className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+          <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
             <li>
               <span className="font-semibold text-foreground">
                 Suprabha Electricals
               </span>{" "}
-              is a Government Licensed{" "}
+              is a Government Super Licensed{" "}
               <span className="font-semibold text-foreground">
-                Class ‘1’ Electrical Contractor & Consultant
+                Electrical Contractor & Consultant
               </span>{" "}
               with over{" "}
               <span className="font-semibold text-foreground">
@@ -90,7 +89,7 @@ export function About() {
             <li>
               We undertake{" "}
               <span className="font-medium text-foreground">
-                HT & LT electrical works up to 33 KV
+                HT & LT electrical works up to 400 kVA
               </span>
               , including consultancy, supply, execution, and turnkey project
               delivery.
@@ -105,16 +104,26 @@ export function About() {
               for industrial, commercial, and institutional facilities.
             </li>
 
+            {/* 🔽 SINGLE, COMPRESSED INTEGRATION BLOCK */}
             <li>
-              We are proud holders of the{" "}
-              <span className="font-semibold text-foreground">
-                Super Grade Electrical License
-              </span>{" "}
-              <span className="text-xs text-muted-foreground">
-                (December 2025)
+              Our scope further covers{" "}
+              <span className="font-medium text-foreground">
+                industrial and domestic wiring, HT/LT cable laying and jointing,
+                dedicated earthing for UPS and machinery, supply of AMF,
+                synchronization, MCC, PCC, APFC panels, HT/LT breakers (ACB &
+                OCB), transformer oil filtration, OLTC, relay and meter testing
               </span>
-              , enabling us to execute large-scale, high-value, and critical
-              infrastructure projects.
+              , along with integrated systems such as{" "}
+              <span className="font-medium text-foreground">
+                CCTV, fire alarm systems, audio/video conferencing, and VRF /
+                split air-conditioning systems
+              </span>
+              . We have executed projects for{" "}
+              <span className="font-medium text-foreground">
+                industries, IT parks, hospitals, educational institutions, PSUs,
+                KMF projects, and central government bodies
+              </span>
+              .
             </li>
 
             <li>
@@ -123,15 +132,15 @@ export function About() {
                 Electrical Inspectorate licensing, statutory inspections, and
                 renewals
               </span>{" "}
-              for HT, DG, and lift installations.
+              for HT installations, DG sets, and lift electrical systems.
             </li>
           </ul>
 
           {/* Trust indicators */}
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             {[
               "Quality-driven execution with safety-first practices",
-              "Strong experience in government and institutional projects",
+              "Strong experience in government, commercial & healthcare projects",
               "Reliable delivery backed by regulatory compliance",
             ].map((feature) => (
               <div key={feature} className="flex items-start gap-3">

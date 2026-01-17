@@ -7,7 +7,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
-import { Gavel, ShieldCheck, Building2, Timer, Landmark } from "lucide-react";
+import { Gavel, ShieldCheck, Timer, Landmark, Hospital } from "lucide-react";
 
 const highlights = [
   {
@@ -15,8 +15,8 @@ const highlights = [
     title: "Government Projects",
   },
   {
-    icon: <Building2 className="h-5 w-5 text-primary" />,
-    title: "Institutional Infrastructure",
+    icon: <Hospital className="h-5 w-5 text-primary" />,
+    title: "Commercial & Healthcare Electrical Infrastructure",
   },
   {
     icon: <ShieldCheck className="h-5 w-5 text-primary" />,
@@ -185,9 +185,9 @@ export function Hero() {
 
       <div className="absolute inset-0 bg-black/70 dark:bg-black/80" />
 
-      <div className="relative z-10 container px-4 py-24 sm:py-28">
+      <div className="relative z-10 container px-4 py-20 sm:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
-          <div className="hero-badge inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs sm:text-sm font-semibold text-primary">
+          <div className="hero-badge inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm sm:text-xl font-semibold text-primary">
             Electrical Contracting • Karnataka
           </div>
 
@@ -196,8 +196,9 @@ export function Hero() {
           </h1>
 
           <p className="hero-description max-w-3xl mx-auto text-base sm:text-lg text-white/75">
-            Government Licensed Class ‘1’ Electrical Contractor delivering
-            compliant, large-scale electrical infrastructure across Karnataka.
+            Government <strong>Super Licensed</strong> Electrical Contractor
+            delivering compliant, large-scale electrical infrastructure across
+            Karnataka.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 pt-8">

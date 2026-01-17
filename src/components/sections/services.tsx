@@ -205,11 +205,11 @@ export function Services() {
     <section
       id="services"
       ref={container}
-      className="py-24 lg:py-32 bg-card overflow-hidden"
+      className="py-16 lg:py-20 bg-card overflow-hidden"
     >
       <div className="container space-y-16">
         {/* Header */}
-        <div className="section-header-services text-center space-y-4 max-w-3xl mx-auto">
+        <div className="section-header-services text-center space-y-3 max-w-3xl mx-auto">
           <span className="text-primary font-semibold">Our Services</span>
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
             Comprehensive Electrical Solutions
@@ -221,8 +221,8 @@ export function Services() {
         </div>
 
         {/* Content */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="flex flex-col gap-3">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="flex flex-col gap-2">
             {services.map((service, index) => (
               <div
                 key={service.id}

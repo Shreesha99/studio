@@ -33,7 +33,7 @@ const BUSINESS_FAQS: Intent[] = [
   {
     keywords: ["services", "what do you do", "work", "offer"],
     response:
-      "We are a Government Licensed Class-1 Electrical Contractor handling HT & LT electrical works up to 33KV, DG sets, panels, transformers, cable laying, earthing, and annual maintenance for government and institutional projects.",
+      "We are a Government Licensed Class-1 Electrical Contractor handling HT & LT electrical works up to 400KV, DG sets, panels, transformers, cable laying, earthing, and annual maintenance for government and institutional projects.",
   },
   {
     keywords: ["government", "psu", "tender", "public"],

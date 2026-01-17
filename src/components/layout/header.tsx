@@ -8,7 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -20,6 +20,7 @@ import {
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Image from "next/image";
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -33,6 +34,7 @@ export function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const hasAutoExpanded = useRef(false);
 
   // 👇 NEW (isolated)
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -40,10 +42,20 @@ export function Header() {
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 50;
+      setIsScrolled(scrolled);
+
+      // 👇 AUTO-EXPAND NAV ON FIRST SCROLL (DESKTOP ONLY)
+      if (scrolled && !hasAutoExpanded.current && !isMobile) {
+        setIsNavExpanded(true);
+        hasAutoExpanded.current = true;
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const sections = navLinks.map((link) => document.querySelector(link.href));
@@ -78,19 +90,26 @@ export function Header() {
         >
           <div
             className={cn(
-              "flex items-center justify-center transition-all",
-              isScrolled ? "bg-white rounded-full h-10 w-10" : "h-12 w-12"
+              "flex items-center justify-center transition-all overflow-visible",
+              isScrolled ? "bg-white rounded-full h-14 w-14" : "h-12 w-12"
             )}
           >
-            <Zap
+            <Image
+              src="/logo.png"
+              alt="Suprabha Electricals Logo"
+              width={isScrolled ? 48 : 64}
+              height={isScrolled ? 48 : 64}
               className={cn(
-                isScrolled ? "h-6 w-6 text-primary" : "h-8 w-8 text-white"
+                "object-contain transition-all duration-300",
+                isScrolled ? "scale-[1.35]" : "scale-[1.55]"
               )}
+              priority
             />
           </div>
+
           <h1
             className={cn(
-              "font-headline font-bold text-white transition-all",
+              "text-xl font-bold text-white transition-all",
               isScrolled ? "opacity-0 w-0" : "opacity-100 pr-4"
             )}
           >
