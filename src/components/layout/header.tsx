@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Zap, MessageCircle } from "lucide-react";
+import {
+  Menu,
+  Zap,
+  MessageCircle,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,6 +33,10 @@ export function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+
+  // 👇 NEW (isolated)
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -98,14 +108,7 @@ export function Header() {
       <div className="md:hidden fixed top-4 right-4 z-50">
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
-            <div
-              className="
-              rounded-md
-              border
-              bg-background
-              shadow-sm
-        "
-            >
+            <div className="rounded-md border bg-background shadow-sm">
               <Button variant="ghost" size="icon" className="rounded-full">
                 <Menu className="h-5 w-5" />
               </Button>
@@ -153,39 +156,72 @@ export function Header() {
         </Sheet>
       </div>
 
-      {/* Floating Bottom Nav */}
+      {/* Floating Bottom Nav (Desktop Only) */}
       <div className="hidden md:flex fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-        <nav className="flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-lg p-2 shadow-lg">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "px-4 py-2 rounded-full text-sm",
-                activeSection === link.href.replace("#", "")
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav
+          className={cn(
+            "flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-lg p-2 shadow-lg transition-all duration-300",
+            !isNavExpanded && "gap-0 px-2"
+          )}
+        >
+          {/* Nav Links */}
+          <div
+            className={cn(
+              "flex items-center gap-2 overflow-hidden transition-all duration-300",
+              isNavExpanded ? "max-w-[1000px] opacity-100" : "max-w-0 opacity-0"
+            )}
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "px-4 py-2 rounded-full text-sm whitespace-nowrap",
+                  activeSection === link.href.replace("#", "")
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
 
-          {/* 💬 Help — DESKTOP */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="rounded-full gap-2 whitespace-nowrap"
+              onClick={() =>
+                window.dispatchEvent(new CustomEvent("open-chatbot"))
+              }
+            >
+              <MessageCircle className="h-4 w-4" />
+              Help
+            </Button>
+
+            <Button
+              asChild
+              className="rounded-full font-bold whitespace-nowrap"
+            >
+              <Link href="#contact">Get a Quote</Link>
+            </Button>
+          </div>
           <Button
             variant="ghost"
             size="sm"
-            className="rounded-full gap-2"
-            onClick={() =>
-              window.dispatchEvent(new CustomEvent("open-chatbot"))
-            }
+            className="rounded-full gap-2 px-3 text-xs font-medium"
+            onClick={() => setIsNavExpanded((v) => !v)}
           >
-            <MessageCircle className="h-4 w-4" />
-            Help
-          </Button>
-
-          <Button asChild className="rounded-full font-bold">
-            <Link href="#contact">Get a Quote</Link>
+            {isNavExpanded ? (
+              <>
+                Collapse
+                <ChevronRight className="h-10 w-10" />
+              </>
+            ) : (
+              <>
+                <ChevronLeft className="h-10 w-10" />
+                Expand
+              </>
+            )}
           </Button>
         </nav>
       </div>
