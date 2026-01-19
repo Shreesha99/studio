@@ -9,10 +9,11 @@ import { useRef } from "react";
 /* ---------------- VENDORS (ANY COUNT SAFE) ---------------- */
 const VENDORS = [
   { id: "CPWD", name: "CPWD", src: "/vendors/cpwd.png" },
-  { id: "KMF", name: "KMF", src: "/vendors/kmf.png" },
-  { id: "IISc", name: "IISc", src: "/vendors/iisc.png" },
-  { id: "RBI", name: "RBI", src: "/vendors/rbi.png" },
-  { id: "HOS", name: "Hospitals", src: "/vendors/hos.png" },
+  { id: "KMF", name: "KMF", src: "/vendors/kmf.jpg" },
+  { id: "IISc", name: "IISc", src: "/vendors/iisc.jpg" },
+  { id: "RBI", name: "RBI", src: "/vendors/rbi.jpg" },
+  { id: "HOS", name: "Hospitals", src: "/vendors/stmarthas.jpg" },
+  { id: "test", name: "Hospitals", src: "/vendors/stmarthas.jpg" },
 ];
 
 /* ---------------- COUNTERS ---------------- */
@@ -54,8 +55,8 @@ export function Hero() {
           { innerText: 0 },
           {
             innerText: target,
-            duration: 1.4,
-            ease: "power1.out",
+            duration: 2.2,
+            ease: "power4.out",
             snap: { innerText: 1 },
             onUpdate() {
               el.innerText = Math.round(Number(el.innerText)) + suffix;
@@ -68,43 +69,43 @@ export function Hero() {
       });
 
       /* ---------------- VENDORS (IMMEDIATE + LOOP SAFE) ---------------- */
-      const logos = gsap.utils.toArray<HTMLElement>(".vendor-logo");
-      if (!logos.length) return;
+      // const logos = gsap.utils.toArray<HTMLElement>(".vendor-logo");
+      // if (!logos.length) return;
 
-      gsap.set(logos, {
-        filter: "grayscale(100%)",
-        opacity: 0.35,
-      });
+      // gsap.set(logos, {
+      //   filter: "grayscale(100%)",
+      //   opacity: 0.35,
+      // });
 
-      let index = 0;
+      // let index = 0;
 
-      const highlight = () => {
-        gsap.set(logos, {
-          filter: "grayscale(100%)",
-          opacity: 0.35,
-        });
+      // const highlight = () => {
+      //   gsap.set(logos, {
+      //     filter: "grayscale(100%)",
+      //     opacity: 0.35,
+      //   });
 
-        gsap.to(logos[index], {
-          filter: "grayscale(0%)",
-          opacity: 1,
-          duration: 1.2,
-          ease: "power2.out",
-        });
+      //   gsap.to(logos[index], {
+      //     filter: "grayscale(0%)",
+      //     opacity: 1,
+      //     duration: 1.2,
+      //     ease: "power2.out",
+      //   });
 
-        index = (index + 1) % logos.length;
-      };
+      //   index = (index + 1) % logos.length;
+      // };
 
-      // highlight immediately
-      highlight();
+      // // highlight immediately
+      // highlight();
 
-      gsap.timeline({ repeat: -1 }).to(
-        {},
-        {
-          duration: 4.5,
-          repeat: -1,
-          onRepeat: highlight,
-        }
-      );
+      // gsap.timeline({ repeat: -1 }).to(
+      //   {},
+      //   {
+      //     duration: 4.5,
+      //     repeat: -1,
+      //     onRepeat: highlight,
+      //   }
+      // );
     },
     { scope: container }
   );
@@ -188,7 +189,7 @@ export function Hero() {
                   grid-cols-2
                   sm:grid-cols-3
                   md:grid-cols-4
-                  lg:grid-cols-5
+                  lg:grid-cols-6
                   gap-8
                   sm:gap-10
                   items-center

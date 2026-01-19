@@ -163,8 +163,9 @@ export function Contact() {
             <Alert className="border-destructive/30 bg-destructive/10">
               <AlertTriangle className="h-4 w-4 text-destructive" />
               <AlertDescription className="text-sm">
-                We do not provide immediate electrical support. This channel is
-                strictly for project-based enquiries only.
+                We <strong>do not </strong> provide immediate electrical
+                support. This channel is strictly for project-based enquiries
+                only.
               </AlertDescription>
             </Alert>
           </div>

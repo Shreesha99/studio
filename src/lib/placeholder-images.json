@@ -3,13 +3,13 @@
     {
       "id": "hero-background",
       "description": "A dramatic shot of electrical power lines against a sunset sky, representing power distribution.",
-      "imageUrl": "/hero.jpeg",
+      "imageUrl": "/hero.jpg",
       "imageHint": "power grid"
     },
     {
       "id": "about-image",
       "description": "A team of professional electricians in uniform discussing blueprints inside a building under construction.",
-      "imageUrl": "/about.jpg",
+      "imageUrl": "/about.jpeg",
       "imageHint": "electricians blueprints"
     },
     {

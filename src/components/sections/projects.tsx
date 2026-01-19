@@ -32,12 +32,27 @@ const projects = [
     ],
   },
   {
-    id: "cii",
-    title: "CII Office",
+    id: "Apeda",
+    title: "Apeda",
     location: "Bengaluru",
     description:
       "Complete electrical installation including power distribution, lighting systems, structured cabling, and safety compliance for institutional office premises.",
-    images: ["/projects/cii/1.jpg", "/projects/cii/2.jpg"],
+    images: [
+      "/projects/apeda/1.jpeg",
+      "/projects/apeda/2.jpeg",
+      "/projects/apeda/3.jpeg",
+      "/projects/apeda/4.jpeg",
+      "/projects/apeda/5.jpeg",
+      "/projects/apeda/6.jpeg",
+      "/projects/apeda/7.jpeg",
+      "/projects/apeda/8.jpeg",
+      "/projects/apeda/9.jpeg",
+      "/projects/apeda/10.jpeg",
+      "/projects/apeda/11.jpeg",
+      "/projects/apeda/12.jpeg",
+      "/projects/apeda/13.jpeg",
+      "/projects/apeda/14.jpeg",
+    ],
   },
   {
     id: "nit",
@@ -305,11 +320,11 @@ export function Projects() {
             <X className="h-6 w-6" />
           </button>
 
-          <div className="container min-h-screen flex flex-col justify-center py-12">
-            <div className="grid gap-10 lg:grid-cols-2 items-center">
+          <div className="max-w-7xl mx-auto min-h-screen flex flex-col justify-center px-4 py-12">
+            <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] items-center">
               <div
                 ref={imageWrapperRef}
-                className="relative aspect-video w-full rounded-xl overflow-hidden"
+                className="relative h-[22rem] sm:h-[26rem] md:h-[30rem] lg:h-[36rem] w-full rounded-2xl overflow-hidden"
               >
                 <Image
                   key={activeIndex}

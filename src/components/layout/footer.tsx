@@ -1,4 +1,4 @@
-import { Zap } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -10,8 +10,16 @@ export function Footer() {
         {/* Top row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
-          <div className="flex items-center gap-2">
-            <Zap className="h-6 w-6 text-primary" />
+          <div className="flex items-center gap-3">
+            <div className="relative h-8 w-8">
+              <Image
+                src="/logo.png"
+                alt="Suprabha Electricals Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
             <span className="text-lg font-bold font-headline text-foreground">
               Suprabha Electricals
             </span>
@@ -40,7 +48,7 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* Bottom row — SAFE ZONE */}
+        {/* Bottom row */}
         <div className="text-xs text-muted-foreground text-center md:text-left">
           © {currentYear} Suprabha Electricals. All rights reserved.
         </div>
