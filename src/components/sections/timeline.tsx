@@ -151,6 +151,9 @@ export default function TimelinePage() {
         <h1 className="mt-3 text-4xl md:text-5xl font-bold">
           Timeline of Excellence
         </h1>
+        <h1 className=" text-primary mt-3 text-xl md:text-xl font-bold">
+          Scroll to view full journey
+        </h1>
         <p className="mt-4 text-muted-foreground text-lg">
           A year-by-year look at how Suprabha Electricals evolved into a trusted
           government contractor.
@@ -225,9 +228,9 @@ export default function TimelinePage() {
                 </p>
               </div>
 
-              <div className="mt-10 h-1 w-full bg-border rounded-full overflow-hidden">
+              {/* <div className="mt-10 h-1 w-full bg-border rounded-full overflow-hidden">
                 <div className="h-full w-1/3 bg-primary rounded-full" />
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
