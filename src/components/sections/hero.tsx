@@ -13,7 +13,6 @@ const VENDORS = [
   { id: "IISc", name: "IISc", src: "/vendors/iisc.jpg" },
   { id: "RBI", name: "RBI", src: "/vendors/rbi.jpg" },
   { id: "HOS", name: "Hospitals", src: "/vendors/stmarthas.jpg" },
-  { id: "test", name: "Hospitals", src: "/vendors/stmarthas.jpg" },
 ];
 
 /* ---------------- COUNTERS ---------------- */
@@ -32,7 +31,6 @@ export function Hero() {
 
   useGSAP(
     () => {
-      /* ---------------- HERO ENTRANCE ---------------- */
       gsap.fromTo(
         ".hero-animate",
         { opacity: 0, y: 14 },
@@ -45,7 +43,6 @@ export function Hero() {
         }
       );
 
-      /* ---------------- COUNTERS ---------------- */
       gsap.utils.toArray<HTMLElement>(".hero-counter").forEach((el) => {
         const target = Number(el.dataset.value);
         const suffix = el.dataset.suffix || "";
@@ -67,45 +64,6 @@ export function Hero() {
           }
         );
       });
-
-      /* ---------------- VENDORS (IMMEDIATE + LOOP SAFE) ---------------- */
-      // const logos = gsap.utils.toArray<HTMLElement>(".vendor-logo");
-      // if (!logos.length) return;
-
-      // gsap.set(logos, {
-      //   filter: "grayscale(100%)",
-      //   opacity: 0.35,
-      // });
-
-      // let index = 0;
-
-      // const highlight = () => {
-      //   gsap.set(logos, {
-      //     filter: "grayscale(100%)",
-      //     opacity: 0.35,
-      //   });
-
-      //   gsap.to(logos[index], {
-      //     filter: "grayscale(0%)",
-      //     opacity: 1,
-      //     duration: 1.2,
-      //     ease: "power2.out",
-      //   });
-
-      //   index = (index + 1) % logos.length;
-      // };
-
-      // // highlight immediately
-      // highlight();
-
-      // gsap.timeline({ repeat: -1 }).to(
-      //   {},
-      //   {
-      //     duration: 4.5,
-      //     repeat: -1,
-      //     onRepeat: highlight,
-      //   }
-      // );
     },
     { scope: container }
   );
@@ -114,16 +72,7 @@ export function Hero() {
     <section
       ref={container}
       id="home"
-      className="
-        relative
-        min-h-screen
-        flex
-        items-center
-        justify-center
-        overflow-hidden
-        text-center
-        px-4
-      "
+      className="relative min-h-screen flex items-center justify-center overflow-hidden text-center px-4"
     >
       {/* Background */}
       {heroImage && (
@@ -136,71 +85,70 @@ export function Hero() {
         />
       )}
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/70" />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto">
-        <div className="space-y-8 sm:space-y-10">
+        <div className="space-y-6 sm:space-y-10">
           {/* Badge */}
-          <div className="hero-animate inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs sm:text-sm font-semibold text-primary">
+          <div className="hero-animate inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] sm:text-sm font-semibold text-primary">
             Government Super Licensed Electrical Contractor
           </div>
 
           {/* Title */}
-          <h1 className="hero-animate text-2xl sm:text-4xl md:text-5xl font-headline font-bold text-white leading-snug sm:leading-tight">
+          <h1 className="hero-animate text-xl sm:text-4xl md:text-5xl font-headline font-bold text-white leading-snug sm:leading-tight px-2">
             Powering Government & Public Infrastructure Across Karnataka
           </h1>
 
           {/* Description */}
-          <p className="hero-animate max-w-3xl mx-auto text-sm sm:text-lg text-white/75">
+          <p className="hero-animate max-w-2xl mx-auto text-sm sm:text-lg text-white/75 px-3">
             Compliant HT & LT electrical infrastructure for government bodies,
             PSUs, institutions, and critical facilities.
           </p>
 
           {/* Counters */}
-          <div className="hero-animate grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-2">
+          <div className="hero-animate grid grid-cols-3 gap-4 sm:gap-8 pt-2 max-w-md sm:max-w-none mx-auto">
             {COUNTERS.map((item) => (
-              <div key={item.label} className="space-y-1">
+              <div key={item.label} className="space-y-0.5">
                 <div
-                  className="hero-counter text-2xl sm:text-3xl font-bold text-white tabular-nums"
+                  className="hero-counter text-xl sm:text-3xl font-bold text-white tabular-nums"
                   data-value={item.value}
                   data-suffix={item.suffix}
                 >
                   0
                 </div>
-                <p className="text-xs sm:text-sm uppercase tracking-wide text-white/60">
+                <p className="text-[10px] sm:text-sm uppercase tracking-wide text-white/60">
                   {item.label}
                 </p>
               </div>
             ))}
           </div>
 
-          {/* Vendors – Base Band */}
+          {/* Vendors */}
           <div className="hero-animate pt-6 sm:pt-10">
-            <p className="mb-3 sm:mb-4 text-[10px] sm:text-xs uppercase tracking-wide text-white/50">
+            <p className="mb-3 text-[10px] sm:text-xs uppercase tracking-wide text-white/50">
               Trusted Vendors
             </p>
 
-            <div className="bg-black/40 backdrop-blur-sm border-t border-white/10 py-5 sm:py-6">
+            <div className="bg-black/40 backdrop-blur-sm border-t border-white/10 py-4 sm:py-6">
               <div
                 className="
-                  grid
-                  grid-cols-2
-                  sm:grid-cols-3
-                  md:grid-cols-4
-                  lg:grid-cols-6
-                  gap-8
-                  sm:gap-10
-                  items-center
-                  justify-items-center
-                  max-w-5xl
-                  mx-auto
-                "
+    grid
+    gap-y-6
+    gap-x-6
+    sm:gap-10
+    items-center
+    justify-items-center
+    max-w-5xl
+    mx-auto
+  "
+                style={{
+                  gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
+                }}
               >
                 {VENDORS.map((vendor) => (
                   <div key={vendor.id} className="vendor-logo">
-                    <div className="relative h-20 w-28 sm:h-24 sm:w-36">
+                    <div className="relative h-16 w-28 sm:h-24 sm:w-36">
                       <Image
                         src={vendor.src}
                         alt={vendor.name}
