@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { projects } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,106 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 const IMAGE_DURATION = 4000;
 const PROJECTS_PER_PAGE = 4;
 const PAGE_DURATION = 5000;
-
-const projects = [
-  {
-    id: "gsi",
-    title: "Geological Survey of India",
-    location: "Bengaluru",
-    description:
-      "Execution of HT & LT electrical infrastructure, panel installations, cabling, earthing, and statutory compliance for a central government research facility.",
-    images: [
-      "/projects/gsi/1.jpg",
-      "/projects/gsi/2.jpeg",
-      "/projects/gsi/3.jpeg",
-      "/projects/gsi/4.jpeg",
-      "/projects/gsi/5.jpeg",
-      "/projects/gsi/6.jpeg",
-      "/projects/gsi/7.jpeg",
-      "/projects/gsi/8.jpeg",
-      "/projects/gsi/9.jpeg",
-    ],
-  },
-  {
-    id: "Apeda",
-    title: "Apeda",
-    location: "Bengaluru",
-    description:
-      "Complete electrical installation including power distribution, lighting systems, structured cabling, and safety compliance for institutional office premises.",
-    images: [
-      "/projects/apeda/1.jpeg",
-      "/projects/apeda/2.jpeg",
-      "/projects/apeda/3.jpeg",
-      "/projects/apeda/4.jpeg",
-      "/projects/apeda/5.jpeg",
-      "/projects/apeda/6.jpeg",
-      "/projects/apeda/7.jpeg",
-      "/projects/apeda/8.jpeg",
-      "/projects/apeda/9.jpeg",
-      "/projects/apeda/10.jpeg",
-      "/projects/apeda/11.jpeg",
-      "/projects/apeda/12.jpeg",
-      "/projects/apeda/13.jpeg",
-      "/projects/apeda/14.jpeg",
-    ],
-  },
-  {
-    id: "nit",
-    title: "NIT Surathkal – New Wing",
-    location: "Surathkal",
-    description:
-      "HT/LT electrical works, internal wiring, panel installations, and coordination with statutory authorities for a new academic block.",
-    images: [
-      "/projects/nit/1.jpg",
-      "/projects/nit/2.jpg",
-      "/projects/nit/3.jpg",
-    ],
-  },
-  {
-    id: "auditorium",
-    title: "Auditorium Electrification",
-    location: "Multiple Locations",
-    description:
-      "Design and execution of electrical systems for auditoriums including lighting, power distribution, control panels, and safety systems.",
-    images: ["/projects/auditorium/1.jpg", "/projects/auditorium/2.jpg"],
-  },
-  {
-    id: "gsi2",
-    title: "Geological Survey of India",
-    location: "Bengaluru",
-    description:
-      "Execution of HT & LT electrical infrastructure, panel installations, cabling, earthing, and statutory compliance for a central government research facility.",
-    images: [
-      "/projects/gsi/1.jpg",
-      "/projects/gsi/2.jpeg",
-      "/projects/gsi/3.jpeg",
-      "/projects/gsi/4.jpeg",
-      "/projects/gsi/5.jpeg",
-      "/projects/gsi/6.jpeg",
-      "/projects/gsi/7.jpeg",
-      "/projects/gsi/8.jpeg",
-      "/projects/gsi/9.jpeg",
-    ],
-  },
-  {
-    id: "gsi1",
-    title: "Geological Survey of India",
-    location: "Bengaluru",
-    description:
-      "Execution of HT & LT electrical infrastructure, panel installations, cabling, earthing, and statutory compliance for a central government research facility.",
-    images: [
-      "/projects/gsi/1.jpg",
-      "/projects/gsi/2.jpeg",
-      "/projects/gsi/3.jpeg",
-      "/projects/gsi/4.jpeg",
-      "/projects/gsi/5.jpeg",
-      "/projects/gsi/6.jpeg",
-      "/projects/gsi/7.jpeg",
-      "/projects/gsi/8.jpeg",
-      "/projects/gsi/9.jpeg",
-    ],
-  },
-];
 
 /* ================= COMPONENT ================= */
 
