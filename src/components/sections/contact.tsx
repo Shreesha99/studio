@@ -160,7 +160,7 @@ export function Contact() {
               );
             })}
 
-            <Alert className="border-destructive/30 bg-destructive/10 border-white/30">
+            <Alert className="bg-destructive/10 border-white/30">
               <AlertTriangle className="h-4 w-4 text-destructive" />
               <AlertDescription className="text-sm">
                 We <strong>do not </strong> provide immediate electrical
