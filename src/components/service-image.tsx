@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export const ServiceImage = ({ service }: { service: Service }) => {
   return (
-    <div className="aspect-[4/3] rounded-xl overflow-hidden">
+    <div className="relative w-full h-[280px] sm:h-[360px] md:h-[480px] lg:h-[560px] rounded-xl overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={service.imageUrl}

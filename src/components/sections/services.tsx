@@ -16,36 +16,36 @@ const AUTOPLAY_DURATION = 4000;
 const services: Service[] = [
   {
     id: 1,
-    iconName: "Gavel",
-    title: "Government Projects",
+    iconName: "Landmark",
+    title: "Government & Public Sector Projects",
     description:
-      "Specializing in electrical tendering and execution for state and central government projects.",
+      "Electrical contracting, execution, and compliance for state and central government infrastructure projects.",
     imageUrl: PlaceHolderImages.find((p) => p.id === "service-govt")!.imageUrl,
   },
   {
     id: 2,
-    iconName: "Lightbulb",
-    title: "Electrical Installations",
+    iconName: "Zap",
+    title: "HT & LT Electrical Installations",
     description:
-      "Complete installation services for new buildings, infrastructure, and public facilities.",
+      "Design, supply, installation, and commissioning of HT & LT systems up to 33 kV capacity.",
     imageUrl: PlaceHolderImages.find((p) => p.id === "service-installations")!
       .imageUrl,
   },
   {
     id: 3,
-    iconName: "Building",
-    title: "Auditorium & Public Spaces",
+    iconName: "Settings",
+    title: "Power Systems, Panels & Maintenance",
     description:
-      "Expert design and installation of lighting and electrical systems for auditoriums and large venues.",
+      "DG sets, transformers, panels, breakers, and comprehensive annual maintenance services.",
     imageUrl: PlaceHolderImages.find((p) => p.id === "service-auditorium")!
       .imageUrl,
   },
   {
     id: 4,
     iconName: "Network",
-    title: "Infrastructure Setup",
+    title: "Wiring, Cabling & Integrated Systems",
     description:
-      "Electrical setup for new wings of institutions, and large-scale infrastructure projects.",
+      "Industrial and building wiring, earthing, fire alarm, CCTV, and ELV system integration.",
     imageUrl: PlaceHolderImages.find((p) => p.id === "service-infra")!.imageUrl,
   },
 ];
@@ -212,11 +212,12 @@ export function Services() {
         <div className="section-header-services text-center space-y-3 max-w-3xl mx-auto">
           <span className="text-primary font-semibold">Our Services</span>
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
-            Comprehensive Electrical Solutions
+            Comprehensive Electrical Contracting Services
           </h2>
           <p className="text-lg text-muted-foreground">
-            We provide a complete range of electrical services tailored for
-            government contracts, ensuring quality, safety, and efficiency.
+            Delivering government-grade electrical infrastructure,
+            compliance-driven execution, and long-term reliability for public
+            sector, institutional, and industrial projects.
           </p>
         </div>
 

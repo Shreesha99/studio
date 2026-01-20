@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import ScrollToTopButton from "@/components/utils/scroll-to-top-button";
 
 export const metadata: Metadata = {
   title: "Suprabha Electricals",
@@ -18,9 +19,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -42,7 +43,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <GsapProvider>{children}</GsapProvider>
+          <GsapProvider>
+            <ScrollToTopButton />
+            {children}
+          </GsapProvider>
           <Toaster />
         </ThemeProvider>
       </body>
