@@ -241,7 +241,6 @@ export const projects = [
       "/projects/pune/17.jpeg",
       "/projects/pune/18.jpeg",
       "/projects/pune/19.jpeg",
-      "/projects/pune/20.jpeg",
     ],
   },
 ];
