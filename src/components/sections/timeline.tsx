@@ -208,6 +208,9 @@ export default function TimelinePage() {
         <h1 className="mt-3 text-4xl md:text-5xl font-bold">
           Timeline of Excellence
         </h1>
+        <h3 className="mt-3 text-xl md:text-xl text-primary">
+          Scroll to view our milestones
+        </h3>
         <p className="mt-4 text-muted-foreground text-lg">
           A year-by-year look at how Suprabha Electricals evolved into a trusted
           government contractor.
