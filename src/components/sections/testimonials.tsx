@@ -10,8 +10,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const AUTOPLAY_DURATION = 5;
-const FOCUS_HEIGHT = "360px"; // try 22rem / 40vh etc
-const BLUR_HEIGHT = "320px";
+const FOCUS_HEIGHT = "clamp(300px, 70vh, 360px)";
+const BLUR_HEIGHT = "clamp(260px, 65vh, 320px)";
 
 const testimonials = [
   {
@@ -62,27 +62,26 @@ export function Testimonials() {
       const track = trackRef.current;
       const getCards = () => Array.from(track.children) as HTMLElement[];
 
-      const cardWidth = getCards()[0].offsetWidth;
-      const gap = 32;
-      const isMobile = window.innerWidth < 640;
-      const step = isMobile ? cardWidth : cardWidth + gap;
+      const getLayout = () => {
+        const w = window.innerWidth;
 
-      /* ---------- Mobile-safe scale ---------- */
-      const mm = gsap.matchMedia();
-      let ACTIVE_SCALE = 1.05;
+        if (w < 640) return { visible: 1, center: 0 };
+        if (w < 1024) return { visible: 2, center: 0 };
 
-      mm.add("(max-width: 640px)", () => {
-        ACTIVE_SCALE = 1;
-      });
+        return { visible: 3, center: 1 };
+      };
 
-      mm.add("(min-width: 641px)", () => {
-        ACTIVE_SCALE = 1.05;
-      });
-
-      const CENTER_INDEX = 1;
+      const getStep = () => {
+        const cardWidth = getCards()[0].offsetWidth;
+        const gap = 32;
+        const { visible } = getLayout();
+        return visible === 1 ? cardWidth : cardWidth + gap;
+      };
 
       const slideNext = () => {
         const cards = getCards();
+        const { center } = getLayout();
+        const step = getStep();
 
         const tl = gsap.timeline({
           onComplete: () => {
@@ -106,33 +105,29 @@ export function Testimonials() {
           "<"
         );
 
-        // focus animation overlaps slide (KEY FIX)
         tl.to(
-          cards[CENTER_INDEX + 1], // +1 because slide is mid-transition
+          cards[center + 1],
           {
             opacity: 1,
             height: FOCUS_HEIGHT,
             duration: 0.6,
             ease: "power3.out",
           },
-          "<0.4" // 👈 start BEFORE slide ends
+          "<0.4"
         );
       };
 
-      /* ---------------- Init ---------------- */
       ScrollTrigger.create({
         trigger: track,
         start: "top 80%",
         once: true,
         onEnter: () => {
-          gsap.set(track, { x: 0 });
-
-          const CENTER_INDEX = 1;
+          const { center } = getLayout();
 
           getCards().forEach((card, i) => {
             gsap.set(card, {
-              height: i === CENTER_INDEX ? FOCUS_HEIGHT : BLUR_HEIGHT,
-              opacity: i === CENTER_INDEX ? 1 : 0.45,
+              height: i === center ? FOCUS_HEIGHT : BLUR_HEIGHT,
+              opacity: i === center ? 1 : 0.45,
             });
           });
 
@@ -145,6 +140,8 @@ export function Testimonials() {
           );
         },
       });
+
+      window.addEventListener("resize", () => ScrollTrigger.refresh());
     },
     { scope: container }
   );
@@ -163,23 +160,27 @@ export function Testimonials() {
 
         <div className="relative flex justify-center">
           <div
-            className="overflow-hidden"
-            style={{
-              width: "calc(3 * 420px + 2 * 32px + 60px)",
-              maxWidth: "100%",
-            }}
+            className="
+              overflow-hidden
+              w-[420px]
+              sm:w-[calc(2*420px+32px+40px)]
+              lg:w-[calc(3*420px+2*32px+60px)]
+              max-w-full
+            "
           >
             <div
               ref={trackRef}
               className="flex items-center will-change-transform"
               style={{ height: FOCUS_HEIGHT }}
             >
-              {/* CLONED LAST CARD */}
-              {(() => {
-                const t = testimonials.at(-1)!;
-
-                return (
-                  <Card className="focus-card min-w-[420px] h-[320px] opacity-45 bg-card border-border shadow-lg">
+              {testimonials
+                .slice(-1)
+                .concat(testimonials)
+                .map((t, i) => (
+                  <Card
+                    key={i}
+                    className="focus-card min-w-[420px] h-[320px] opacity-45 bg-card border-border shadow-lg"
+                  >
                     <CardContent className="p-8 flex flex-col h-full">
                       <p className="text-[15px] leading-relaxed italic text-muted-foreground/80 flex-1">
                         “{t.quote}”
@@ -199,35 +200,7 @@ export function Testimonials() {
                       </div>
                     </CardContent>
                   </Card>
-                );
-              })()}
-
-              {/* MAIN CARDS */}
-              {testimonials.map((t, i) => (
-                <Card
-                  key={i}
-                  className="focus-card min-w-[420px] h-[320px] opacity-45 bg-card border-border shadow-lg"
-                >
-                  <CardContent className="p-8 flex flex-col h-full">
-                    <p className="text-[15px] leading-relaxed italic text-muted-foreground/80 flex-1">
-                      “{t.quote}”
-                    </p>
-
-                    <div className="mt-6 pt-4 border-t border-border/40 flex items-center gap-4">
-                      <Avatar className="h-9 w-9">
-                        <AvatarImage src={t.image} />
-                        <AvatarFallback>{t.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <div className="leading-tight">
-                        <p className="font-semibold text-sm">{t.name}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {t.title}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                ))}
             </div>
           </div>
         </div>
